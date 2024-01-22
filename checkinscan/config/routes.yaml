@@ -11,16 +11,16 @@ read_products:
 
 create_products:
     path: /product/create
-    controller: App\Controller\ProductController::read
+    controller: App\Controller\ProductController::create
     methods: POST
 
 delete_products:
     path: /product/{id}/delete
-    controller: App\Controller\ProductController::read
+    controller: App\Controller\ProductController::delete
     methods: POST
 
 update_products:
     path: /product/{id}/update
-    controller: App\Controller\ProductController::read
+    controller: App\Controller\ProductController::update
     methods: POST
 
