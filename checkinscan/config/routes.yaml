@@ -1,0 +1,26 @@
+controllers:
+    resource:
+        path: ../src/Controller/
+        namespace: App\Controller
+    type: attribute
+
+read_products:
+    path: /product/read
+    controller: App\Controller\ProductController::read
+    methods: POST
+
+create_products:
+    path: /product/create
+    controller: App\Controller\ProductController::read
+    methods: POST
+
+delete_products:
+    path: /product/{id}/delete
+    controller: App\Controller\ProductController::read
+    methods: POST
+
+update_products:
+    path: /product/{id}/update
+    controller: App\Controller\ProductController::read
+    methods: POST
+

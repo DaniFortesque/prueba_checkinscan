@@ -1,0 +1,41 @@
+version: '3'
+
+services:
+    db:
+        image: mysql:latest
+        container_name: db_checkinscan
+        volumes:
+            - "db_checkinscan:/var/lib/mysql"
+        environment:
+            MYSQL_ROOT_PASSWORD: password
+            MYSQL_DATABASE: checkinscan_db
+            MYSQL_USER: admin
+            MYSQL_PASSWORD: password
+        ports:
+            - 3306:3306
+        networks:
+            - symfony
+    php:
+        build:
+            context: .
+            dockerfile: docker/php/Dockerfile
+        volumes:
+            - ./checkinscan/:/var/www/checkinscan/
+        networks:
+            - symfony
+    nginx:
+        build:
+            context: .
+            dockerfile: docker/nginx/Dockerfile
+        volumes:
+            - ./checkinscan/:/var/www/checkinscan/
+        ports:
+            - 8080:8080
+        networks:
+            - symfony
+
+volumes:
+    db_checkinscan:
+
+networks:
+    symfony:
